@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="NotasBD" Class="NoteBDDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=ZUSL-PC\SQLEXPRESS;Initial Catalog=NotasBD;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="NotasBDConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Usuarios" Member="Usuarios">
+    <Type Name="Usuarios">
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NombreUser" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="Clave" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Materias" Member="Materias">
+    <Type Name="Materias">
+      <Column Name="MateriaId" Type="System.String" DbType="Char(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NombreMateria" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Notas" Member="Notas">
+    <Type Name="Notas">
+      <Column Name="Numero" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Titulo" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="Descripcion" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="NombreMateria" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="NombreUser" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.selectNote" Method="selectNote">
+    <Parameter Name="user" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="msj" Type="System.String" DbType="VarChar(10)" />
+    <ElementType Name="selectNoteResult">
+      <Column Name="Numero" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Titulo" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="Descripcion" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="NombreMateria" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="NombreUser" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.deleteNote" Method="deleteNote">
+    <Parameter Name="user" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="msj" Type="System.String" DbType="VarChar(10)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.eraseNote" Method="eraseNote">
+    <Parameter Name="title" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="msj" Type="System.String" DbType="VarChar(10)" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>
